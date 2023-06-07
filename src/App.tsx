@@ -1,26 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { useState, useEffect } from 'react'
+import Header from './components/Header'
+import LogForm from './components/LogForm'
+import Card from './components/Card'
+import Input from './components/Input'
+import './App.css'
+import { login, logout } from './utils/api'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+type User = {
+  name: string
+  email: string
 }
 
-export default App;
+function App() {
+  const [user, setUser] = useState<User[]>([])
+  const [logged, setLogged] = useState<boolean>(false)
+  const [fetchedData, setFetchedData] = useState<boolean>(false)
+
+  const logHandler = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    console.log('handler')
+  }
+
+
+
+  return (
+    <div className="App">
+      <header className="header-container">
+        <Header loggedIn/>
+     </header>
+     <hr/>
+      {logged ? 
+        <div className="card-container">
+
+        </div> 
+        : 
+        <div>
+          <LogForm loggedIn={logged}/>
+        </div>}
+    </div>
+  )
+}
+
+export default App
