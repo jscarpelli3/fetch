@@ -1,20 +1,24 @@
 import React from 'react'
 import Input from './Input'
-
+import Button from './Button'
 
 type Props = {
-  loggedIn: boolean;  
+  loggedIn: boolean
+}
+
+const LogForm: React.FC<Props> = ({ loggedIn }) => {
+
+  const handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
+    console.log('i submitted')
   }
 
-
-const LogForm: React.FC<Props> = ({loggedIn}) => {
-  return(
-    <div className='logform-box'>
-      <form className='log-form'>
-      <Input type='text' defaultValue='name'/>
-      <Input type='email' defaultValue='email'/>
-      <button className='submit-form-button' type='submit'> Submit</button>
-      </form> 
+  return (
+    <div className="logform-box">
+      <form className="log-form" onSubmit={handleLogin}>
+        <Input type="text" defaultValue="name" />
+        <Input type="email" defaultValue="email" />
+        <Button onClickBool={false} buttonType='submit' buttonText="LogOut" />
+      </form>
     </div>
   )
 }

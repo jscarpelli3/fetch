@@ -1,15 +1,17 @@
 import React from 'react'
 
 type Props = {
-  type: string
-  defaultValue: string
+  name: keyof formData
+  inputType: 'email' | 'text'
+  defaultValue: 'Your Email' | 'Your Name'
+  onChange: (event: React.ChangeEvent<HTMLInputElement>)
 }
 
-const Input: React.FC<Props> = ({type, defaultValue}) => {
+const Input: React.FC<Props> = ({inputType, defaultValue}) => {
   return(
     <div className='input-box'>
       <input
-      type={type}
+      type={inputType}
       defaultValue={defaultValue}
       />
     </div>

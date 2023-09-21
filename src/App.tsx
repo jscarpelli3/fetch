@@ -32,7 +32,7 @@ function App() {
      <hr/>
       {logged ? 
         <div className="card-container">
-
+          <Input />
         </div> 
         : 
         <div>
